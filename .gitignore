@@ -1,3 +1,5 @@
 .vs/
 Hours.API/bin/
 Hours.API/obj/
+Hours.Database/bin/
+Hours.Database/obj/
