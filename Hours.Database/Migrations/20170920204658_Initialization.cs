@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Hours.Database.Migrations
 {
-    public partial class Initialisation : Migration
+    public partial class Initialization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace Hours.Database.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -62,7 +62,7 @@ namespace Hours.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProjectTasks",
+                name: "Tasks",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -74,15 +74,15 @@ namespace Hours.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProjectTasks", x => x.Id);
+                    table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProjectTasks_Employees_EmployeeId",
+                        name: "FK_Tasks_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProjectTasks_Projects_ProjectId",
+                        name: "FK_Tasks_Projects_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
@@ -95,13 +95,13 @@ namespace Hours.Database.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectTasks_EmployeeId",
-                table: "ProjectTasks",
+                name: "IX_Tasks_EmployeeId",
+                table: "Tasks",
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectTasks_ProjectId",
-                table: "ProjectTasks",
+                name: "IX_Tasks_ProjectId",
+                table: "Tasks",
                 column: "ProjectId");
         }
 
@@ -111,7 +111,7 @@ namespace Hours.Database.Migrations
                 name: "ProjectEmployees");
 
             migrationBuilder.DropTable(
-                name: "ProjectTasks");
+                name: "Tasks");
 
             migrationBuilder.DropTable(
                 name: "Employees");

@@ -14,7 +14,7 @@ namespace Hours.Database.Entities
         public string Name { get; set; }
 
         [Required]
-        public string CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public ICollection<ProjectEmployee> ProjectEmployees { get; set; }
             = new List<ProjectEmployee>();

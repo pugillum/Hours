@@ -5,7 +5,7 @@ namespace Hours.Database
 {
     public class HoursContext : DbContext
     {
-        public DbSet<Task> ProjectTasks { get; set; }
+        public DbSet<Task> Tasks { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<ProjectEmployee> ProjectEmployees { get; set; }

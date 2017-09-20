@@ -49,8 +49,7 @@ namespace Hours.Database.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CreatedDate")
-                        .IsRequired();
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -94,7 +93,7 @@ namespace Hours.Database.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("ProjectTasks");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("Hours.Database.Entities.ProjectEmployee", b =>

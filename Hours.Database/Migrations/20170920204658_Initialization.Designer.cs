@@ -11,8 +11,8 @@ using System;
 namespace Hours.Database.Migrations
 {
     [DbContext(typeof(HoursContext))]
-    [Migration("20170917135307_Initialisation")]
-    partial class Initialisation
+    [Migration("20170920204658_Initialization")]
+    partial class Initialization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,8 +50,7 @@ namespace Hours.Database.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CreatedDate")
-                        .IsRequired();
+                    b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -95,7 +94,7 @@ namespace Hours.Database.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("ProjectTasks");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("Hours.Database.Entities.ProjectEmployee", b =>
